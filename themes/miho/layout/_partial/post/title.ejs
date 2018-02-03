@@ -1,0 +1,39 @@
+<% if (post.link){ %>
+  <h1 itemprop="name">
+    <a class="<%= class_name %>" href="<%- url_for(post.link) %>" target="_blank" itemprop="url"><%= post.title %></a>
+  </h1>
+<% } else if (post.title){ %>
+  <% if (index){ %>
+    <h1 itemprop="name">
+      <a class="<%= class_name %>" href="<%- url_for(post.path) %>" <% if (theme.open_new_link) {%> target="_blank" <% } %> ><%= post.title %></a>
+    </h1>
+  <% } else { %>
+    <h1 class="post-title" itemprop="name">
+      <%= post.title %>
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+        <li>
+         <i class="fa fa-calendar"></i> 发表于: <%= date(post.date)%> 
+        </li>
+
+        <li>/</li>
+
+        <li>
+         <i class="fa fa-eye"></i> 访问量: <span id="busuanzi_value_page_pv"></span>
+        </li>
+
+        <li>/</li>
+
+            <% if (post.categories && post.categories.length){ %>
+              <li>
+                  <i class="fa fa-book"></i> 分类于:
+                  <% post.categories.forEach(function (category) { %>
+                      <a href="<%= config.root %>categories/<%= category.name.replace(/\s+/g, '') %>/"><%- category.name %></a>
+                  <% }) %>
+              </li>
+          <% } %>
+      </ul>
+    </div>
+  <% } %>
+<% } %>

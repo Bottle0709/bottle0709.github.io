@@ -1,0 +1,123 @@
+<style>
+#cont{
+    margin-top: 40px;
+    background-color: #fff;
+    box-shadow: 0 8px 10px rgba(0, 0, 0, 0.25);
+}
+.banner { 
+    text-align: center; 
+    overflow: hidden; 
+    line-height: 30px; 
+    text-shadow: #fff 1px 1px 1px;  
+    color: #333; 
+    padding: 40px 0 0 0; 
+    }
+/*文字动画效果*/
+.banner p{
+    font-size: 16px;
+    text-shadow:1px 1px 5px #8B8878;
+}
+
+.about { 
+    overflow: hidden; 
+    margin-bottom: 15px;
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 0 8px 10px rgba(0, 0, 0, 0.25);
+    }
+.about h2 { 
+    font-size: 25px; 
+    margin-bottom: 20px;
+    color: #FFFFFF; 
+    background: #8B636C; 
+    padding: 10px 0; 
+    width: 150px; 
+    text-align: center; 
+    border-radius: 0 30px 30px 0; 
+    box-shadow: #63B8FF 1px 1px 1px; 
+    border-left: #dae1e4 6px solid;
+     }
+
+
+.category-all {
+      margin-top: 20px;
+      text-align: center;
+    }
+.category-list {
+      margin: 0;
+      padding: 0;
+   }
+.category-list-item {
+     margin: 15px 15px;
+     font-size: 20px;
+     list-style: none;
+   }
+.category-list-link{
+    color: #030303;
+    text-decoration:none;
+    padding-bottom:1px;
+    border-bottom: 1px solid #A6A6A6;
+}
+.category-list-count {
+    color: #bbb;
+  }
+
+.category-list-count:before {
+        display: inline;
+        content: " (";
+  }
+.category-list-count:after {
+      display: inline;
+      content: ") ";
+}
+.category-list-child {
+     padding-left: 10px;
+}  
+</style>
+
+
+<div id="cont">
+  <marquee style="height: 50px;" scrollamount="2" direction="down" behavior="slide">
+    <div class="banner">
+      <p>目前共计<%- (site.posts.length ) %>个分类</p>
+    </div>
+       </marquee>
+    <div class="about left">
+     <h2>分类</h2>
+       <div class="category-all">
+          <ul class="category-list">
+            <li class="category-list-item">
+              <a class="category-list-link"><%- list_categories(site.categories) %></a>
+            </li>
+         </ul>
+        </div>
+    </div>
+</div>
+<div class="gbko">
+        <% if (theme.changyan_appid && theme.changyan_appkey){ %>
+        <%- partial('/plugins/comments/changyan', {
+            key: post.slug,
+            title: post.title,
+            url: config.url+url_for(post.path)
+        }) %>
+    <% } else if (theme.youyan_id) { %>
+        <%- partial('plugins/comments/youyan') %>
+     <% } else if (theme.livere_uid) { %>
+        <%- partial('plugins/comments/livere') %>
+        <div id="lv-container" data-id="city" data-uid="<%= theme.livere_uid %>"></div>
+    <% }else if (theme.disqus || config.disqus_shortname) { %>
+        <section id="comments">
+            <div id="disqus_thread">
+                <script type="text/javascript">
+                    var disqus_shortname = '<%= theme.disqus || config.disqus_shortname %>';
+                    (function() {
+                        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                    })();
+                </script>
+                <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+            </div>
+        </section>
+    <% } %>
+        </div>

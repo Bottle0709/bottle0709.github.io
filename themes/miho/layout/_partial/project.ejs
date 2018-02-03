@@ -1,0 +1,210 @@
+<style>
+.container { 
+     margin-top: 40px;
+    background-color: #fff;
+    box-shadow: 0 8px 10px rgba(0, 0, 0, 0.25);
+    }
+.ctitle{ 
+    position: relative;
+    padding-top: 30px;
+    }
+.ctitle b{
+    font-size: 25px; 
+    margin-bottom: 20px;
+    color: #FFFFFF;  
+    background: #8B636C; 
+    padding: 10px 0; 
+    width: 200px; 
+    text-align: center; 
+    border-radius: 0 30px 30px 0; 
+    box-shadow: #63B8FF 1px 1px 1px; 
+    border-left: #dae1e4 6px solid; 
+    display:block;
+    }
+.gbook {
+    margin: 30px;
+    border-top: thin #EAEAEA solid;
+}
+.about {
+    padding: 20px 0;
+    overflow: hidden;
+    /*平板电脑*/
+}
+.about_girl {
+    margin: 10px auto 0;
+    overflow: hidden;
+    border-bottom: thin #EAEAEA solid;
+}
+.about_girl span {
+    float: right;
+    margin-right: 60px;
+}
+.about_girl p {
+    margin: 50px;
+    background: #EEDFCC;
+    color: #444;
+    float: right;
+    padding: 20px;
+    width: 46%;
+    height: 45px;
+    line-height: 27px;
+    border-radius: 6px;
+    position: relative;
+    box-shadow: inset #999 -1px -1px 1px;
+    text-shadow: #fff 1px 1px 0px;
+    width: 450px;
+}
+.about_girl p::before {
+    content: "";
+    width: 0px;
+    height: 0px;
+    border-style: solid;
+    border-width: 25px 0 25px 25px;
+    border-color: transparent #EEDFCC transparent;
+    position: absolute;
+    right: -24px;
+    top: 19px;
+}
+
+
+
+.repo-list{
+    list-style: none;
+}
+.repo{
+    width: 46%;
+    margin: 0 10px 10px 15px;
+    display: inline-block;
+    border: 2px solid #ddd; 
+    box-shadow: 0 0 8px 0 rgba(0,0,0,.25);
+    transition: all .3s linear;
+}
+.repo:hover{
+    box-shadow: 0 0 18px 0 rgba(0,0,0,.5);
+}
+.works-item-img img {
+        width: 95%;
+        margin-left: 10px;
+    }
+.works-item .footer {
+        padding: 5px 0 5px 0;
+        border-top: thin #DBDBDB solid;
+    }
+.works-item .footer .btn {
+        margin: 5px 10px 5px 0;
+        padding: 7px 9px;
+        border-radius: 2px;
+        float: right;
+        text-transform: none;
+        text-decoration:none;        
+        font-size: 10px;
+        font-style: italic;
+        background: #0085a1;
+        border: none;
+        color: #fff;
+    }
+.works-item  h3 {
+        display: inline-block;
+        margin: 8px 10px 0;
+        height: 33px;
+        font-size: 18px;
+        font-weight: 400;
+    }
+.works-item .title-date {
+        float: right;
+        font-size: 18px;
+    }
+.works-item span.use{
+        display: inline-block;
+        font-size: 12px;
+        border-radius: 3px;
+        padding: 2px 4px;
+        margin: 8px 0 0 20px;
+        border: thin solid #795548;
+    }
+.works-item .subtitle {
+        margin: 2px 0 0 8px;
+        font-size: 15px;
+        color: 	#555555;
+    }
+.works-item .text-muted {
+        text-indent:2em;
+        margin: 10px;
+        font-size: 11px;
+        line-height: 20px;
+        color: #828282;
+    }
+
+
+/*平板电脑*/
+@media screen and (min-width:600px) and (max-width:900px){
+    .about_girl span {
+    float: right;
+    margin-right: 20px;
+   }
+    .about_girl p {
+    margin: 50px 1px;
+    float: left;
+  }
+  .repo{
+    width: 46%;
+    margin: 0 8px 10px 12px;
+  }
+    }
+
+
+/*移动端（手机端）*/
+@media screen and (max-width: 600px) {
+  .about_girl span {
+    margin: 0px 85px;
+    float: none;
+}
+  .about_girl p {
+    display:none;
+  }
+  .repo{
+    width: 42%;
+    margin: 0 8px 10px 11px;
+  }
+  .works-item  h3 {
+        font-size: 16px;
+    }
+   .works-item-img img {
+        margin-left: 3px;
+    }
+   }
+</style>
+<div class="container">
+  <h2 class="ctitle"><b>个人作品集</b></h2>
+       <div class="gbook">
+            <div class="about">
+               <div class="about_girl"><span><a href="/"><img src="<%= url_for(theme.pro) %>" alt="logo"></a></span>
+               <p>凡是重要的事，都得花上很多的时间，而且是完整的大块时间。不论是讨论一种新产品还是重大的人事决策，几乎所有的事情都是如此。</p>
+               </div>
+            </div>
+       </div>
+   <div class="works-item">
+       <ol class="repo-list">
+        <% for(var i in theme.project){ %>
+          <li class="repo">
+                <div class="works-item">
+                    <div class="title">
+                        <h3> <%- theme.project[i].title %></h3>
+                        <span class="title-date"> <%- theme.project[i].data %> </span>
+                    </div>
+                    <div class="works-item-img">
+                        <img src="<%- theme.project[i].img_link %>">
+                    </div>
+                        <span class="use"> <%- theme.project[i].arrayVal %> </span>
+                        <p class="subtitle"> <%- theme.project[i].subTitle %> </p>
+                        <p class="text-muted"> <%- theme.project[i].direction %> </p>
+                    <div class="footer clearfix">
+                        <a class=" btn btn-default" href="<%- theme.project[i].link %>" target="_blank"> Open
+                            it</a>
+                    </div>
+                </div>
+                </li>
+                <% } %>
+   </ol>
+         </div> 
+</div>
