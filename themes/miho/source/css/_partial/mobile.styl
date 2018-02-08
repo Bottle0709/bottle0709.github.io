@@ -2,10 +2,11 @@
   #header
     height: 130px
   #header-row
-    padding-top: -1px 
+    padding-top: 1px 
   #logo
     width: m-logo-size
     height: m-logo-size
+    margin: 0px auto 
   #logo img
     width: m-logo-size
     height: m-logo-size
@@ -43,14 +44,19 @@
       color: #fff
   .article
     margin: 10px 10px
+    .article-title
+       font-size: 1.0em
     .article-img
       display: none
-    .article-entry, .article-feed
+    .article-entry, .article-feed 
       margin-left: 0
       p
         margin: 0
+        font-size: 0.8rem
     .article-footer .article-footer-menu .article-footer-tags
       display: none
+    #article-nav
+        font-size: @extend $base-style h6
   .module-mobile-cmt-barrage
     display: none
   .sidebar
@@ -174,3 +180,4 @@
     max-width: calc(100vw - 60px)
   .reward-title
     font-size: 18px
+ 

@@ -1,8 +1,5 @@
-# hexo-theme-miho
-# https://github.com/wongminho/hexo-theme-miho
-
 # Favicon of your site | 网站icon
-favicon: /favicon.icon
+favicon: /favicon.ico
 
 # Header
 
@@ -11,7 +8,7 @@ keywords: TLY,TLY's Blog
 # Head headline | 头部标题
 header_title: TLY's Blog
 # Head description | 头部描述
-header_description: 一个热衷于web前端设计的个人网站，分享生活及工作。
+header_description: 一个记录自己生活点滴、互联网技术学习成果和经验的原创自媒体个人网站
 # Link to your logo | logo地址
 logo: images/logo.png
 # Link to your banner_img | 首页banner图地址
@@ -86,14 +83,14 @@ project:
     arrayVal: jQuery 
     subTitle: 根据美版apple官网临摹 
     direction: 临摹 2016 年三月份 Apple 美版单页面, 临摹的主要目的是练习响应式页面,兼容 Firefox、Chrome、Edge。使用了 HTML5 的 flex 布局,未在IE上测试,实际上作品页面结构比较凌乱,前期也未作好规划,现在看来有很多的不足和改善空间。
-    link: https://github.com/th720309/hexo-theme-believe
+    link: #
   - title: Apple 官网临摹
     data: 2016.3
     img_link: http://o7bkkhiex.bkt.clouddn.com/item-apple.jpg
     arrayVal: jQuery 
     subTitle: 根据美版apple官网临摹 
     direction: 临摹 2016 年三月份 Apple 美版单页面, 临摹的主要目的是练习响应式页面,兼容 Firefox、Chrome、Edge。使用了 HTML5 的 flex 布局,未在IE上测试,实际上作品页面结构比较凌乱,前期也未作好规划,现在看来有很多的不足和改善空间。
-    link: https://github.com/th720309/hexo-theme-believe
+    link: #
 
 
 # Content
@@ -168,4 +165,4 @@ access_counter:
   site_pv: 访问量：
 
 # Copyright Information | 版权信息
-copyright: 2017 MinHow
+copyright: 2018 tongliping
