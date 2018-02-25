@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Hexo 博客个性化搭建 | TLY&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="TLY,TLY's Blog">
+  
+  <meta name="description" content="前言&amp;emsp;博客基本框架搭建起来了，但不是很满意。于是下一步要做的就是添加想要实现的功能。在此过程中通过查网上资料且不断的折腾代码，完成如今的博客，还是有些缺陷，日后再修改，在此记录下我是如何实现这些功能的，以免过后遗忘。 一、框架功能添加&amp;emsp;1.增加新的导航菜单&amp;emsp;在 Hexo里，默认的导航菜单只有Home和Archives两项，那么如何增加新的导航菜单进去？ &amp;emsp;">
+<meta name="keywords" content="css,html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo 博客个性化搭建">
+<meta property="og:url" content="http://yoursite.com/20180108/Hexo 博客个性化搭建/index.html">
+<meta property="og:site_name" content="TLY&#39;s Blog">
+<meta property="og:description" content="前言&amp;emsp;博客基本框架搭建起来了，但不是很满意。于是下一步要做的就是添加想要实现的功能。在此过程中通过查网上资料且不断的折腾代码，完成如今的博客，还是有些缺陷，日后再修改，在此记录下我是如何实现这些功能的，以免过后遗忘。 一、框架功能添加&amp;emsp;1.增加新的导航菜单&amp;emsp;在 Hexo里，默认的导航菜单只有Home和Archives两项，那么如何增加新的导航菜单进去？ &amp;emsp;">
+<meta property="og:image" content="http://p3nn031ge.bkt.clouddn.com/blog/180224/CE0h2G5E6k.jpg?imageslim">
+<meta property="og:image" content="http://p3nn031ge.bkt.clouddn.com/blog/180205/l14H2I6cFb.jpg?imageslim">
+<meta property="og:image" content="http://p3nn031ge.bkt.clouddn.com/blog/180205/5hAGcH7Abm.png?imageslim">
+<meta property="og:image" content="http://p3nn031ge.bkt.clouddn.com/blog/180205/bIDLDb835C.png?imageslim">
+<meta property="og:image" content="http://p3nn031ge.bkt.clouddn.com/blog/180205/8aL61FmeFA.png?imageslim">
+<meta property="og:image" content="http://p3nn031ge.bkt.clouddn.com/blog/180205/J17KHm0bBD.png?imageslim">
+<meta property="og:image" content="http://p3nn031ge.bkt.clouddn.com/blog/180205/ld4E4CGGgF.png?imageslim">
+<meta property="og:image" content="http://p3nn031ge.bkt.clouddn.com/blog/180205/2iFah71fc9.png?imageslim">
+<meta property="og:image" content="http://p3nn031ge.bkt.clouddn.com/blog/180205/7J2EHc6eD4.png?imageslim">
+<meta property="og:image" content="http://p3nn031ge.bkt.clouddn.com/blog/180205/D941FBj9c5.png?imageslim">
+<meta property="og:image" content="http://p3nn031ge.bkt.clouddn.com/blog/180205/hDBLCIlaEI.png?imageslim">
+<meta property="og:image" content="http://p3nn031ge.bkt.clouddn.com/blog/180205/9LcD2HchAJ.png?imageslim">
+<meta property="og:updated_time" content="2018-02-24T05:30:22.722Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo 博客个性化搭建">
+<meta name="twitter:description" content="前言&amp;emsp;博客基本框架搭建起来了，但不是很满意。于是下一步要做的就是添加想要实现的功能。在此过程中通过查网上资料且不断的折腾代码，完成如今的博客，还是有些缺陷，日后再修改，在此记录下我是如何实现这些功能的，以免过后遗忘。 一、框架功能添加&amp;emsp;1.增加新的导航菜单&amp;emsp;在 Hexo里，默认的导航菜单只有Home和Archives两项，那么如何增加新的导航菜单进去？ &amp;emsp;">
+<meta name="twitter:image" content="http://p3nn031ge.bkt.clouddn.com/blog/180224/CE0h2G5E6k.jpg?imageslim">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+</html>
+<body>
+  <div id="container">
+      <!-- 
+   header.ejs 首页头部设计
+-->
+<style>
+    .fa{
+        font-size: 1.5em;
+    }
+    /*移动端（手机端）*/
+@media screen and (max-width: 600px) {
+    .fa{
+        font-size: 1.33em;
+    }
+   }
+    </style>
+<header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left"> <!--  菜单左边——tly's blog -->
+                    <span class="site-title">TLY&#39;s Blog</span>
+                </a>
+                <nav id="header-menu-nav" class="right"> <!--  菜单右边——首页等 -->
+                    
+                    <a href="/">
+                        <i class="fa fa-home"></i>
+                        <span>首页</span>
+                    </a>
+                    
+                    <a href="/categories">
+                        <i class="fa fa-book"></i>
+                        <span>分类</span>
+                    </a>
+                    
+                    <a href="/project">
+                        <i class="fa fa-folder-open"></i>
+                        <span>项目</span>
+                    </a>
+                    
+                    <a href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>归档</span>
+                    </a>
+                    
+                    <a href="/saying">
+                        <i class="fa fa-edit"></i>
+                        <span>留言</span>
+                    </a>
+                    
+                    <a href="/about">
+                        <i class="fa fa-user"></i>
+                        <span>关于我</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/logo.png" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-description">
+                    
+                    <h3>
+                        一个记录自己生活点滴、互联网技术学习成果和经验的原创自媒体个人网站
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="Github" target="_blank" href="//github.com/tongliping0709">
+                            <div class="fa"><i class="fa fa-github"></i></div></a>
+                    
+                        <a title="weibo" target="_blank" href="//weibo.com/tongliping0709">
+                            <div class="fa"><i class="fa fa-weibo"></i></div></a>
+                    
+                        <a title="email" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=fkhOSkhISUhNTT4PD1AdERM" rel="external nofollow noopener noreferrer">
+                            <div class="fa"><i class="fa fa-envelope-o"></i></div></a>
+                    
+                        <a title="titter" target="_blank" href="//twitter.com/">
+                            <div class="fa"><i class="fa fa-twitter"></i></div></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-Hexo 博客个性化搭建" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+
+  
+    <h1 class="post-title" itemprop="name">
+      Hexo 博客个性化搭建
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+        <li>
+         <i class="fa fa-calendar"></i> 2018-01-08  
+        </li>
+        <li>/</li>
+        <li>
+         <i class="fa fa-eye"></i> 访问量: <span id="busuanzi_value_page_pv"></span> 
+        </li>
+        <li>/</li>
+            
+              <li>
+                  <i class="fa fa-book"></i> 分类于:
+                  
+                      <a href="/categories/Hexo/">Hexo</a>
+                  
+              </li>
+          
+      </ul>
+    </div>
+  
+
+           
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            <!--
+   画廊
+-->
+
+            <p><img src="http://p3nn031ge.bkt.clouddn.com/blog/180224/CE0h2G5E6k.jpg?imageslim" alt="mark"></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>&emsp;博客基本框架搭建起来了，但不是很满意。于是下一步要做的就是添加想要实现的功能。在此过程中通过查网上资料且不断的折腾代码，完成如今的博客，还是有些缺陷，日后再修改，在此记录下我是如何实现这些功能的，以免过后遗忘。</p>
+<h2 id="一、框架功能添加"><a href="#一、框架功能添加" class="headerlink" title="一、框架功能添加"></a>一、框架功能添加</h2><h3 id="emsp-1-增加新的导航菜单"><a href="#emsp-1-增加新的导航菜单" class="headerlink" title="&emsp;1.增加新的导航菜单"></a>&emsp;1.增加新的导航菜单</h3><p>&emsp;在 Hexo里，默认的导航菜单只有<code>Home</code>和<code>Archives</code>两项，那么如何增加新的导航菜单进去？</p>
+<p>&emsp;首先，打开主题的配置文件<code>_config.yml</code><br>&emsp;之后我们会看到<code>menu:</code>，这个部分是设置菜单的，在下面加一想设置<code>About: /about</code>，前面部分是名称，后面部分是访问路径。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">menu:</span><br><span class="line">  Home: /</span><br><span class="line">  Archives:/archives</span><br><span class="line">  About: /about</span><br></pre></td></tr></table></figure></p>
+<p>&emsp;设置好后，通过运行命令，建立 about，会在 source 目录里生成一个对应的about目录，该目录下的 index.md，就是访问 About 时的页面。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo n page &apos;about&apos;</span><br></pre></td></tr></table></figure></p>
+<h3 id="emsp-2-修改头像并旋转"><a href="#emsp-2-修改头像并旋转" class="headerlink" title="&emsp;2.修改头像并旋转"></a>&emsp;2.修改头像并旋转</h3><p>&emsp;<strong>实现方法：</strong><br>打开<code>\themes\miho\source\css\_partial\header.styl</code>，在里面添加如下代码：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#logo</span></span><br><span class="line">  @<span class="keyword">extend</span> $logo-common</span><br><span class="line">  margin: <span class="number">20px</span> auto </span><br><span class="line">  img</span><br><span class="line">    border-radius: <span class="number">50%</span></span><br><span class="line">    transition: all <span class="number">1.6s</span> cubic-bezier(.<span class="number">17</span>,.<span class="number">67</span>,.<span class="number">62</span>,<span class="number">1.22</span>)</span><br><span class="line">    -webkit-transition: all <span class="number">1.6s</span> cubic-bezier(.<span class="number">17</span>,.<span class="number">67</span>,.<span class="number">62</span>,<span class="number">1.22</span>)</span><br><span class="line">    -moz-transition: all <span class="number">1.6s</span> cubic-bezier(.<span class="number">17</span>,.<span class="number">67</span>,.<span class="number">62</span>,<span class="number">1.22</span>)</span><br><span class="line">    -o-transition: all <span class="number">1.6s</span> cubic-bezier(.<span class="number">17</span>,.<span class="number">67</span>,.<span class="number">62</span>,<span class="number">1.22</span>)</span><br><span class="line">    -ms-transition: all <span class="number">1.6s</span> cubic-bezier(.<span class="number">17</span>,.<span class="number">67</span>,.<span class="number">62</span>,<span class="number">1.22</span>)</span><br><span class="line">    &amp;:hover</span><br><span class="line">      transform: rotate(<span class="number">360deg</span>);</span><br><span class="line">      <span class="selector-tag">-ms-transform</span>: <span class="selector-tag">rotate</span>(360<span class="selector-tag">deg</span>); <span class="comment">/* IE 9 */</span></span><br><span class="line">      <span class="selector-tag">-webkit-transform</span>: <span class="selector-tag">rotate</span>(360<span class="selector-tag">deg</span>); <span class="comment">/* Safari and Chrome */</span></span><br></pre></td></tr></table></figure></p>
+<p>&emsp;<strong>实现效果：</strong><br><img src="http://p3nn031ge.bkt.clouddn.com/blog/180205/l14H2I6cFb.jpg?imageslim" alt="mark"></p>
+<h3 id="emsp-3-设置网站的图标Favicon"><a href="#emsp-3-设置网站的图标Favicon" class="headerlink" title="&emsp;3.设置网站的图标Favicon"></a>&emsp;3.设置网站的图标Favicon</h3><p>&emsp;<strong>实现方法：</strong><br>&emsp;在网站下载或是制作，并将图标名称改为<code>favicon.ico</code>,然后把图标放在<code>/themes/miho/source/images</code>里，并修改主题配置文件：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># Favicon of your site | 网站icon</span><br><span class="line">favicon: /favicon.icon</span><br></pre></td></tr></table></figure></p>
+<p>&emsp;<strong>实现效果：</strong><br><img src="http://p3nn031ge.bkt.clouddn.com/blog/180205/5hAGcH7Abm.png?imageslim" alt="mark"></p>
+<h3 id="emsp-4-在网站底部加上访问量"><a href="#emsp-4-在网站底部加上访问量" class="headerlink" title="&emsp;4.在网站底部加上访问量"></a>&emsp;4.在网站底部加上访问量</h3><p>&emsp;<strong>实现方法：</strong><br>&emsp;打开<code>\themes\miho\layout\_partial\plugins\sites\visit.ejs</code>文件，添加如下代码：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;span id="busuanzi_container_site_pv" style='display:none'&gt;</span><br><span class="line">        &lt;%- theme.access_counter.site_pv %&gt;&lt;span id="busuanzi_value_site_pv"&gt;&lt;/span&gt;</span><br><span class="line">    &lt;/span&gt;</span><br></pre></td></tr></table></figure></p>
+<p>&emsp;<strong>实现效果：</strong><br><img src="http://p3nn031ge.bkt.clouddn.com/blog/180205/bIDLDb835C.png?imageslim" alt="mark"></p>
+<h3 id="emsp-5-增加图床"><a href="#emsp-5-增加图床" class="headerlink" title="&emsp;5.增加图床"></a>&emsp;5.增加图床</h3><p>&emsp;<strong>实现方法：</strong><br>&emsp;写博客避免不了常常使用图片,可是Github Pages是有容量限制的,不可能全部都作为静态文件进行上传。在此使用一个大多博主推荐的“七牛云图床”。七牛云不是免费的，但每个用户有10GB免费存储，每月10GB免费下载流量,需要验证身份证等个人信息。使用方法:<br>&emsp;1.打开链接并注册,单机 对象存储–&gt;创建空间。<br><img src="http://p3nn031ge.bkt.clouddn.com/blog/180205/8aL61FmeFA.png?imageslim" alt="mark"></p>
+<p>&emsp;2.下载 MPic，下载后设置账号</p>
+<p><img src="http://p3nn031ge.bkt.clouddn.com/blog/180205/J17KHm0bBD.png?imageslim" alt="mark"></p>
+<blockquote>
+<p>  1).在“个人面板”-&gt;“密钥管理”中查看 AccessKey/SecretKey；<br>  2).在储存空间的“空间概览”里，记住这里的“测试域名”；<br>  3).在MPic上配置上刚才七牛储存的“空间名称”、“AccessKey”、“SecretKey”、“域名”后，保存。然后就可以上传到自己专属的七牛空间上了。</p>
+</blockquote>
+<h2 id="二、文章功能添加"><a href="#二、文章功能添加" class="headerlink" title="二、文章功能添加"></a>二、文章功能添加</h2><h3 id="emsp-1-主页文章添加阴影效果"><a href="#emsp-1-主页文章添加阴影效果" class="headerlink" title="&emsp;1.主页文章添加阴影效果"></a>&emsp;1.主页文章添加阴影效果</h3><p>&emsp;<strong>实现方法：</strong><br>打开<code>\themes\miho\source\css\_partial\header.styl</code>,向里面加入：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 主页文章添加阴影效果</span></span><br><span class="line"> .post &#123;</span><br><span class="line">   margin-top: <span class="number">60</span>px;</span><br><span class="line">   margin-bottom: <span class="number">60</span>px;</span><br><span class="line">   padding: <span class="number">25</span>px;</span><br><span class="line">   -webkit-box-shadow: <span class="number">0</span> <span class="number">0</span> <span class="number">5</span><span class="function">px <span class="title">rgba</span><span class="params">(<span class="number">202</span>, <span class="number">203</span>, <span class="number">203</span>, <span class="number">.5</span>)</span></span>;</span><br><span class="line">   -moz-box-shadow: <span class="number">0</span> <span class="number">0</span> <span class="number">5</span><span class="function">px <span class="title">rgba</span><span class="params">(<span class="number">202</span>, <span class="number">203</span>, <span class="number">204</span>, <span class="number">.5</span>)</span></span>;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="emsp-2-修改-代码块自定义样式"><a href="#emsp-2-修改-代码块自定义样式" class="headerlink" title="&emsp;2.修改``代码块自定义样式"></a>&emsp;2.修改``代码块自定义样式</h3><p>&emsp;<strong>实现方法：</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">.article-entry code &#123;</span><br><span class="line">    color: #c7254e;</span><br><span class="line">    line-height: <span class="number">1</span>;</span><br><span class="line">    margin: <span class="number">0</span> <span class="number">4</span>px;</span><br><span class="line">    font-size: <span class="number">85</span>%;</span><br><span class="line">    font-family: <span class="string">"Source Code Pro"</span>, Consolas, Monaco, Menlo, Consolas, monospace;</span><br><span class="line">    font-size: <span class="number">1</span>em;</span><br><span class="line">    padding: <span class="number">2</span>px <span class="number">4</span>px;</span><br><span class="line">    border: 1px solid #eee;</span><br><span class="line">    border-radius: <span class="number">2</span>px;</span><br><span class="line">    word-wrap: <span class="keyword">break</span>-word;</span><br><span class="line">    background-color: #f9f2f4;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>&emsp;<strong>实现效果：</strong><br><img src="http://p3nn031ge.bkt.clouddn.com/blog/180205/ld4E4CGGgF.png?imageslim" alt="mark"></p>
+<h3 id="emsp-3-在每篇文章末尾统一添加”本文结束”标记"><a href="#emsp-3-在每篇文章末尾统一添加”本文结束”标记" class="headerlink" title="&emsp;3.在每篇文章末尾统一添加”本文结束”标记"></a>&emsp;3.在每篇文章末尾统一添加”本文结束”标记</h3><p>&emsp;<strong>实现方法：</strong><br>&emsp;在路径 <code>\themes\miho\layout\_partial\post</code> 中新建 <code>passage-end-tag.ejs</code> 文件,并添加以下内容：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div style="text-align:center;color: #B8B8B8;font-size:22px;"&gt;-------------本文结束 &lt;i class="fa fa-paw"&gt;&lt;/i&gt; 感谢您的阅读-------------&lt;/div&gt;</span><br></pre></td></tr></table></figure></p>
+<p>&emsp;<strong>实现效果：</strong><br><img src="http://p3nn031ge.bkt.clouddn.com/blog/180205/2iFah71fc9.png?imageslim" alt="mark"></p>
+<h3 id="emsp-4-添加来必力评论"><a href="#emsp-4-添加来必力评论" class="headerlink" title="&emsp;4.添加来必力评论"></a>&emsp;4.添加来必力评论</h3><p>&emsp;<strong>实现方法：</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&lt;% <span class="keyword">if</span> (!index &amp;&amp; post.comments)&#123; %&gt;</span><br><span class="line">    &lt;% <span class="keyword">if</span> (theme.changyan_appid &amp;&amp; theme.changyan_appkey)&#123; %&gt;</span><br><span class="line">        &lt;%- partial(<span class="string">'plugins/comments/changyan'</span>, &#123;</span><br><span class="line">            key: post.slug,</span><br><span class="line">            title: post.title,</span><br><span class="line">            url: config.url+url_for(post.path)</span><br><span class="line">        &#125;) %&gt;</span><br><span class="line">    &lt;% &#125; <span class="keyword">else</span> <span class="keyword">if</span> (theme.youyan_id) &#123; %&gt;</span><br><span class="line">        &lt;%- partial(<span class="string">'plugins/comments/youyan'</span>) %&gt;</span><br><span class="line">     &lt;% &#125; <span class="keyword">else</span> <span class="keyword">if</span> (theme.livere_uid) &#123; %&gt;</span><br><span class="line">        &lt;%- partial(<span class="string">'plugins/comments/livere'</span>) %&gt;</span><br><span class="line">        &lt;div id="lv-container" data-id="city" data-uid="&lt;%= theme.livere_uid %&gt;"&gt;&lt;/div&gt;</span><br><span class="line">    &lt;% &#125;<span class="keyword">else</span> <span class="keyword">if</span> (theme.disqus || config.disqus_shortname) &#123; %&gt;</span><br><span class="line">        &lt;section id=<span class="string">"comments"</span>&gt;</span><br><span class="line">            &lt;div id=<span class="string">"disqus_thread"</span>&gt;</span><br><span class="line">                &lt;script type=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">                    var disqus_shortname = <span class="string">'&lt;%= theme.disqus || config.disqus_shortname %&gt;'</span>;</span><br><span class="line">                    (function() &#123;</span><br><span class="line">                        var dsq = document.createElement(<span class="string">'script'</span>); dsq.type = <span class="string">'text/javascript'</span>; dsq.async = <span class="keyword">true</span>;</span><br><span class="line">                        dsq.src = <span class="string">'//'</span> + disqus_shortname + <span class="string">'.disqus.com/embed.js'</span>;</span><br><span class="line">                        (document.getElementsByTagName(<span class="string">'head'</span>)[<span class="number">0</span>] || document.getElementsByTagName(<span class="string">'body'</span>)[<span class="number">0</span>]).appendChild(dsq);</span><br><span class="line">                    &#125;)();</span><br><span class="line">                &lt;/script&gt;</span><br><span class="line">                &lt;noscript&gt;Please enable JavaScript to view the &lt;a href="//disqus.com/?ref_noscript"&gt;comments powered by Disqus.&lt;/a&gt;&lt;/noscript&gt;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">        &lt;/section&gt;</span><br><span class="line">    &lt;% &#125; %&gt;</span><br><span class="line">&lt;% &#125; %&gt;</span><br></pre></td></tr></table></figure></p>
+<p>&emsp;<strong>实现效果：</strong><br><img src="http://p3nn031ge.bkt.clouddn.com/blog/180205/7J2EHc6eD4.png?imageslim" alt="mark"></p>
+<h3 id="emsp-5-博文置顶"><a href="#emsp-5-博文置顶" class="headerlink" title="&emsp;5.博文置顶"></a>&emsp;5.博文置顶</h3><p>&emsp;<strong>实现方法：</strong><br>&emsp;修改 <code>hero-generator-index</code> 插件，把文件：<code>node_modules/hexo-generator-index/lib/generator.js</code> 内的代码替换为：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'use strict'</span>;</span><br><span class="line">var pagination = require(<span class="string">'hexo-pagination'</span>);</span><br><span class="line"><span class="keyword">module</span>.<span class="keyword">exports</span> = function(locals)&#123;</span><br><span class="line">  var config = <span class="keyword">this</span>.config;</span><br><span class="line">  var posts = locals.posts;</span><br><span class="line">    posts.data = posts.data.sort(function(a, b) &#123;</span><br><span class="line">        <span class="keyword">if</span>(a.top &amp;&amp; b.top) &#123; <span class="comment">// 两篇文章top都有定义</span></span><br><span class="line">            <span class="keyword">if</span>(a.top == b.top) <span class="keyword">return</span> b.date - a.date; <span class="comment">// 若top值一样则按照文章日期降序排</span></span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">return</span> b.top - a.top; <span class="comment">// 否则按照top值降序排</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(a.top &amp;&amp; !b.top) &#123; <span class="comment">// 以下是只有一篇文章top有定义，那么将有top的排在前面（这里用异或操作居然不行233）</span></span><br><span class="line">            <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(!a.top &amp;&amp; b.top) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">return</span> b.date - a.date; <span class="comment">// 都没定义按照文章日期降序排</span></span><br><span class="line">    &#125;);</span><br><span class="line">  var paginationDir = config.pagination_dir || <span class="string">'page'</span>;</span><br><span class="line">  <span class="keyword">return</span> pagination(<span class="string">''</span>, posts, &#123;</span><br><span class="line">    perPage: config.index_generator.per_page,</span><br><span class="line">    layout: [<span class="string">'index'</span>, <span class="string">'archive'</span>],</span><br><span class="line">    format: paginationDir + <span class="string">'/%d/'</span>,</span><br><span class="line">    data: &#123;</span><br><span class="line">      __index: <span class="keyword">true</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>&emsp;在文章中添加 <code>top</code> 值，数值越大文章越靠前，如<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: 解决Charles乱码问题</span><br><span class="line">date: 2017-05-22 22:45:48</span><br><span class="line">tags: 技巧</span><br><span class="line">categories: 技巧</span><br><span class="line">copyright: true</span><br><span class="line">top: 100</span><br><span class="line">---</span><br></pre></td></tr></table></figure></p>
+<h2 id="三、页面功能添加"><a href="#三、页面功能添加" class="headerlink" title="三、页面功能添加"></a>三、页面功能添加</h2><h3 id="emsp-1-项目页面"><a href="#emsp-1-项目页面" class="headerlink" title="&emsp;1.项目页面"></a>&emsp;1.项目页面</h3><p>&emsp;<strong>实现方法：</strong><br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">&lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"container"</span>&gt;</span><br><span class="line">  &lt;h2 class="ctitle"&gt;&lt;b&gt;个人作品集&lt;/b&gt;&lt;/h2&gt;</span><br><span class="line">       &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"gbook"</span>&gt;</span><br><span class="line">            &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"about"</span>&gt;</span><br><span class="line">               &lt;div class="about_girl"&gt;&lt;span&gt;&lt;a href="/"&gt;&lt;img src="&lt;%= url_for(theme.pro) %&gt;" alt="logo"&gt;&lt;/a&gt;&lt;/span&gt;</span><br><span class="line">               &lt;p&gt;凡是重要的事，都得花上很多的时间，而且是完整的大块时间。不论是讨论一种新产品还是重大的人事决策，几乎所有的事情都是如此。&lt;/p&gt;</span><br><span class="line">               &lt;/div&gt;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">       &lt;/div&gt;</span><br><span class="line">   &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"works-item"</span>&gt;</span><br><span class="line">       &lt;ol <span class="class"><span class="keyword">class</span></span>=<span class="string">"repo-list"</span>&gt;</span><br><span class="line">        &lt;% <span class="keyword">for</span>(var i in theme.project)&#123; %&gt;</span><br><span class="line">          &lt;li <span class="class"><span class="keyword">class</span></span>=<span class="string">"repo"</span>&gt;</span><br><span class="line">                &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"works-item"</span>&gt;</span><br><span class="line">                    &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"title"</span>&gt;</span><br><span class="line">                        &lt;h3&gt; &lt;%- theme.project[i].title %&gt;&lt;/h3&gt;</span><br><span class="line">                        &lt;span class="title-date"&gt; &lt;%- theme.project[i].data %&gt; &lt;/span&gt;</span><br><span class="line">                    &lt;/div&gt;</span><br><span class="line">                    &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"works-item-img"</span>&gt;</span><br><span class="line">                        &lt;img src=<span class="string">"&lt;%- theme.project[i].img_link %&gt;"</span>&gt;</span><br><span class="line">                    &lt;/div&gt;</span><br><span class="line">                        &lt;span class="use"&gt; &lt;%- theme.project[i].arrayVal %&gt; &lt;/span&gt;</span><br><span class="line">                        &lt;p class="subtitle"&gt; &lt;%- theme.project[i].subTitle %&gt; &lt;/p&gt;</span><br><span class="line">                        &lt;p class="text-muted"&gt; &lt;%- theme.project[i].direction %&gt; &lt;/p&gt;</span><br><span class="line">                    &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"footer clearfix"</span>&gt;</span><br><span class="line">                        &lt;a <span class="class"><span class="keyword">class</span></span>=<span class="string">" btn btn-default"</span> href=<span class="string">"&lt;%- theme.project[i].link %&gt;"</span> target=<span class="string">"_blank"</span>&gt; Open</span><br><span class="line">                            it&lt;/a&gt;</span><br><span class="line">                    &lt;/div&gt;</span><br><span class="line">                &lt;/div&gt;</span><br><span class="line">                &lt;/li&gt;</span><br><span class="line">                &lt;% &#125; %&gt;</span><br><span class="line">   &lt;/ol&gt;</span><br><span class="line">         &lt;/div&gt; </span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure></p>
+<p>&emsp;<strong>实现效果：</strong><br><img src="http://p3nn031ge.bkt.clouddn.com/blog/180205/D941FBj9c5.png?imageslim" alt="mark"></p>
+<h3 id="emsp-2-留言页面"><a href="#emsp-2-留言页面" class="headerlink" title="&emsp;2.留言页面"></a>&emsp;2.留言页面</h3><p>&emsp;<strong>实现方法：</strong><br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">&lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"container"</span>&gt;</span><br><span class="line">    &lt;h2 <span class="class"><span class="keyword">class</span></span>=<span class="string">"ctitle"</span>&gt;</span><br><span class="line">    &lt;b&gt;留言板&lt;/b&gt; </span><br><span class="line">    &lt;span&gt;你，生命中最重要的过客，之所以是过客，因为你未曾为我停留。&lt;/span&gt;</span><br><span class="line">    &lt;/h2&gt;</span><br><span class="line">    &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"gbook"</span>&gt;</span><br><span class="line">      &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"about"</span>&gt;</span><br><span class="line">        &lt;div id=<span class="string">"fountainG"</span>&gt;</span><br><span class="line">          &lt;li&gt;&lt;/li&gt;</span><br><span class="line">          &lt;li&gt;&lt;/li&gt;</span><br><span class="line">          &lt;li&gt;&lt;/li&gt;</span><br><span class="line">          &lt;li&gt;&lt;/li&gt;</span><br><span class="line">          &lt;li&gt;&lt;/li&gt;</span><br><span class="line">          &lt;li&gt;&lt;/li&gt;</span><br><span class="line">          &lt;li&gt;&lt;/li&gt;</span><br><span class="line">          &lt;li&gt;&lt;/li&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">        &lt;div class="about_girl"&gt;&lt;span&gt;&lt;a href="/"&gt;&lt;img src="&lt;%= url_for(theme.logo) %&gt;" alt="logo"&gt;&lt;/a&gt;&lt;/span&gt;</span><br><span class="line">          &lt;p&gt;当您驻足停留过，从此便注定我们的缘分。站在时间的尽头，我们已是朋友，前端的路上我再也不用一个人独自行走。&lt;/p&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">        &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"gbko"</span>&gt;</span><br><span class="line">        &lt;% <span class="keyword">if</span> (theme.changyan_appid &amp;&amp; theme.changyan_appkey)&#123; %&gt;</span><br><span class="line">        &lt;%- partial(<span class="string">'/plugins/comments/changyan'</span>, &#123;</span><br><span class="line">            key: post.slug,</span><br><span class="line">            title: post.title,</span><br><span class="line">            url: config.url+url_for(post.path)</span><br><span class="line">        &#125;) %&gt;</span><br><span class="line">    &lt;% &#125; <span class="keyword">else</span> <span class="keyword">if</span> (theme.youyan_id) &#123; %&gt;</span><br><span class="line">        &lt;%- partial(<span class="string">'plugins/comments/youyan'</span>) %&gt;</span><br><span class="line">     &lt;% &#125; <span class="keyword">else</span> <span class="keyword">if</span> (theme.livere_uid) &#123; %&gt;</span><br><span class="line">        &lt;%- partial(<span class="string">'plugins/comments/livere'</span>) %&gt;</span><br><span class="line">        &lt;div id="lv-container" data-id="city" data-uid="&lt;%= theme.livere_uid %&gt;"&gt;&lt;/div&gt;</span><br><span class="line">    &lt;% &#125;<span class="keyword">else</span> <span class="keyword">if</span> (theme.disqus || config.disqus_shortname) &#123; %&gt;</span><br><span class="line">        &lt;section id=<span class="string">"comments"</span>&gt;</span><br><span class="line">            &lt;div id=<span class="string">"disqus_thread"</span>&gt;</span><br><span class="line">                &lt;script type=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">                    var disqus_shortname = <span class="string">'&lt;%= theme.disqus || config.disqus_shortname %&gt;'</span>;</span><br><span class="line">                    (function() &#123;</span><br><span class="line">                        var dsq = document.createElement(<span class="string">'script'</span>); dsq.type = <span class="string">'text/javascript'</span>; dsq.async = <span class="keyword">true</span>;</span><br><span class="line">                        dsq.src = <span class="string">'//'</span> + disqus_shortname + <span class="string">'.disqus.com/embed.js'</span>;</span><br><span class="line">                        (document.getElementsByTagName(<span class="string">'head'</span>)[<span class="number">0</span>] || document.getElementsByTagName(<span class="string">'body'</span>)[<span class="number">0</span>]).appendChild(dsq);</span><br><span class="line">                    &#125;)();</span><br><span class="line">                &lt;/script&gt;</span><br><span class="line">                &lt;noscript&gt;Please enable JavaScript to view the &lt;a href="//disqus.com/?ref_noscript"&gt;comments powered by Disqus.&lt;/a&gt;&lt;/noscript&gt;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">        &lt;/section&gt;</span><br><span class="line">    &lt;% &#125; %&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure></p>
+<p>&emsp;<strong>实现效果：</strong><br><img src="http://p3nn031ge.bkt.clouddn.com/blog/180205/hDBLCIlaEI.png?imageslim" alt="mark"></p>
+<h3 id="emsp-3-关于页面"><a href="#emsp-3-关于页面" class="headerlink" title="&emsp;3.关于页面"></a>&emsp;3.关于页面</h3><p>&emsp;<strong>实现方法：</strong><br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">"cont"</span>&gt;</span><br><span class="line">  &lt;marquee style=<span class="string">"height: 140px;"</span> scrollamount=<span class="string">"2"</span> direction=<span class="string">"down"</span> behavior=<span class="string">"slide"</span>&gt;</span><br><span class="line">    &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"banner"</span>&gt;</span><br><span class="line">      &lt;p&gt;我们不停的翻弄着回忆，却再也找不回那时的自己&lt;/p&gt;</span><br><span class="line">      &lt;p&gt;人生，是一场盛大的遇见。若你懂得，就请珍惜。&lt;/p&gt;</span><br><span class="line">      &lt;p&gt;无论下多久的雨，最后都会有彩虹；无论你多么悲伤，要相信幸福在前方等候.&lt;/p&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">       &lt;/marquee&gt;</span><br><span class="line">    &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"about left"</span>&gt;</span><br><span class="line">     &lt;h2&gt;Just about me&lt;/h2&gt;</span><br><span class="line">       &lt;ul&gt; </span><br><span class="line">           &lt;p&gt;关于我，一个未来的小小码农，茫茫宇宙中的一粒小石子。&lt;/p&gt;</span><br><span class="line">           &lt;p&gt;凭借着兴趣已经走过了三个年头，现在已经是大四的老油条，但总的来说还是一个刚步入社会的新人。&lt;/p&gt;</span><br><span class="line">           &lt;p&gt;很喜欢交朋友， 下面是我的微信二维码， 欢迎看到博客的朋友加我好友， 多给我提提意见， 多讨论讨论技术，三人行， 则必有我师 !&lt;/p&gt;</span><br><span class="line">           &lt;p align="center"&gt;微信请备注：博客&lt;/p&gt;</span><br><span class="line">           &lt;p&gt;&lt;img src="/images/wechat_code.jpg" alt=""&gt;&lt;/a&gt;&lt;/p&gt;</span><br><span class="line">           &lt;p&gt;&lt;/p&gt;</span><br><span class="line">       &lt;/ul&gt;</span><br><span class="line">     &lt;h2&gt;About my blog&lt;/h2&gt;</span><br><span class="line">         &lt;p&gt;域  名：暂无&lt;/p&gt;</span><br><span class="line">         &lt;p&gt;服务器：托管于 Github，欢迎 Fork &lt;/p&gt;</span><br><span class="line">         &lt;p&gt;折腾开始于2018年1月2日，基本在2018年1月16完工。&lt;/p&gt;</span><br><span class="line">         &lt;p&gt;一直想有个自己的博客，写写个人学习、工作感悟什么的，当然也会有一些IT类的文章,这次就借助hexo+Github page 搭建了这个博客，第一次搭建还是有些粗糙，以后会逐渐改进。。。&lt;/p&gt;</span><br><span class="line">         </span><br><span class="line">     &lt;h2&gt;Contact Me&lt;/h2&gt;</span><br><span class="line">     &lt;p&gt;新浪微博：&lt;a href="http://weibo.com/tongliping0709" class="blog_link"&gt;点击进入我的新浪微博（可以加个关注哈）&lt;/a&gt;&lt;/p&gt;</span><br><span class="line">     &lt;p&gt;知乎：&lt;a href="https://www.zhihu.com/people/tian-hao-69-26" class="blog_link"&gt;点击进入我的知乎&lt;/a&gt;&lt;/p&gt;</span><br><span class="line">     &lt;p&gt;Github:  &lt;a href="https://github.com/tongliping0709" class="blog_link"&gt;点击进入我的github ( 欢迎fork me )&lt;/a&gt;&lt;/p&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure></p>
+<p>&emsp;<strong>实现效果：</strong><br><img src="http://p3nn031ge.bkt.clouddn.com/blog/180205/9LcD2HchAJ.png?imageslim" alt="mark"></p>
+
+            <style>
+.passage-end{
+    text-align:center;
+    color: #B8B8B8;
+    font-size:22px;
+    margin-top: 10%; 
+}
+/*平板电脑*/
+@media screen and (min-width:600px) and (max-width:900px){
+    .passage-end{
+        font-size:20px;
+   }
+    }
+
+/*移动端（手机端）*/
+@media screen and (max-width: 600px) {
+    .passage-end {
+    font-size: 12px;
+}
+   }
+</style>
+ <div class="passage-end">
+     -------------本文结束 <i class="fa fa-paw"></i> 感谢您的阅读-------------
+    </div>
+   
+            <!-- 
+   版权
+-->
+<div class="post-copyright">
+    <div class="content">
+        <p>发布时间： 2018年01月08日 11:47</p>
+        <p>更新时间： 2018年02月24日 13:30</p>
+        <p>本文链接： <a class="post-url" href="/20180108/Hexo 博客个性化搭建/" title="Hexo 博客个性化搭建">http://yoursite.com/20180108/Hexo 博客个性化搭建/</a></p>
+        <p>版权声明： 原创文章，有问题请评论中留言。非商业转载请注明作者及出处。</p>
+        <footer>
+           <a href="http://yoursite.com">作者：
+                <img src="/images/logo.png" alt="Tong Liping">
+                Tong Liping
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+        
+            
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;">赏</a>
+</div>
+
+<div id="reward" class="post-modal reward-lay">
+    <a class="close" href="javascript:;" id="reward-close">×</a>
+    <span class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        多少都行~
+        <i class="icon icon-quote-right"></i>
+    </span>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/images/wechat_code.jpg" alt="打赏二维码">
+        </div>
+        <div class="reward-select">
+            
+            <label class="reward-select-item checked" data-id="wechat" data-wechat="/images/wechat_code.jpg">
+                <img class="reward-select-item-wechat" src="/images/wechat.png" alt="微信">
+            </label>
+            
+            
+            <label class="reward-select-item" data-id="alipay" data-alipay="/images/alipay_code.jpg">
+                <img class="reward-select-item-alipay" src="/images/alipay.png" alt="支付宝">
+            </label>
+            
+        </div>
+    </div>
+</div>
+
+
+        
+    </div>
+    <footer class="article-footer">
+        
+        
+<!--
+   分享
+-->
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/20180108/Hexo 博客个性化搭建/&title=《Hexo 博客个性化搭建》 — TLY's Blog&pic=http://p3nn031ge.bkt.clouddn.com/blog/180224/CE0h2G5E6k.jpg?imageslim" data-title="微博" rel="external nofollow noopener noreferrer">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/20180108/Hexo 博客个性化搭建/&title=《Hexo 博客个性化搭建》 — TLY's Blog&source=" data-title="QQ" rel="external nofollow noopener noreferrer">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/20180108/Hexo 博客个性化搭建/" data-title="Facebook" rel="external nofollow noopener noreferrer">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Hexo 博客个性化搭建》 — TLY's Blog&url=http://yoursite.com/20180108/Hexo 博客个性化搭建/&via=http://yoursite.com" data-title="Twitter" rel="external nofollow noopener noreferrer">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/20180108/Hexo 博客个性化搭建/" data-title="Google+" rel="external nofollow noopener noreferrer">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/20180108/Hexo 博客个性化搭建/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            <!--
+   标签
+-->
+
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/css/" class="color4">css</a>
+      
+    <a href="/tags/html/" class="color5">html</a>
+      
+  </li>
+
+        </ul>
+        
+    </footer>
+  </div> 
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#前言"><span class="post-toc-text">前言</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#一、框架功能添加"><span class="post-toc-text">一、框架功能添加</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#emsp-1-增加新的导航菜单"><span class="post-toc-text"> 1.增加新的导航菜单</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#emsp-2-修改头像并旋转"><span class="post-toc-text"> 2.修改头像并旋转</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#emsp-3-设置网站的图标Favicon"><span class="post-toc-text"> 3.设置网站的图标Favicon</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#emsp-4-在网站底部加上访问量"><span class="post-toc-text"> 4.在网站底部加上访问量</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#emsp-5-增加图床"><span class="post-toc-text"> 5.增加图床</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#二、文章功能添加"><span class="post-toc-text">二、文章功能添加</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#emsp-1-主页文章添加阴影效果"><span class="post-toc-text"> 1.主页文章添加阴影效果</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#emsp-2-修改-代码块自定义样式"><span class="post-toc-text"> 2.修改``代码块自定义样式</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#emsp-3-在每篇文章末尾统一添加”本文结束”标记"><span class="post-toc-text"> 3.在每篇文章末尾统一添加”本文结束”标记</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#emsp-4-添加来必力评论"><span class="post-toc-text"> 4.添加来必力评论</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#emsp-5-博文置顶"><span class="post-toc-text"> 5.博文置顶</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#三、页面功能添加"><span class="post-toc-text">三、页面功能添加</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#emsp-1-项目页面"><span class="post-toc-text"> 1.项目页面</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#emsp-2-留言页面"><span class="post-toc-text"> 2.留言页面</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#emsp-3-关于页面"><span class="post-toc-text"> 3.关于页面</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<!--
+   文章标题导航
+-->
+
+<nav id="article-nav">
+  
+  
+    <a href="/20180107/VScode 前端插件使用/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">VScode 前端插件使用</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
+
+    
+        
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+
+        <div id="lv-container" data-id="city" data-uid="MTAyMC8zMzU0Mi8xMDA5OA=="></div>
+    
+</section>
+        
+      </div>
+      <!-- 
+   页脚--统计访问数量
+-->
+<footer id="footer">
+  <div class="outer">
+       <div id="footer-info" class="inner">
+      <p>
+      &copy; 2018 <i class="fa fa-heart"></i> Tong Liping<br>
+      </p>
+      
+    <span id="busuanzi_container_site_uv" style="display:none">
+        访用户数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+
+ | 由<a href="http://hexo.io/" target="_blank" rel="external nofollow noopener noreferrer">Hexo</a> Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>强力驱动
+          </div>
+      </div>
+  
+</footer>
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "http://yoursite.com",
+      animate: true,
+      isHome: false,
+      share: true,
+      reward: 1
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            <a class="category-link" href="/categories/Hexo/">Hexo</a><a class="category-link" href="/categories/前端/">前端</a>
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/软件/" style="font-size: 10px;">软件</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a href="/">
+                    <i class="fa fa-home"></i><span>首页</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/categories">
+                    <i class="fa fa-book"></i><span>分类</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/project">
+                    <i class="fa fa-folder-open"></i><span>项目</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/archives">
+                    <i class="fa fa-archive"></i><span>归档</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/saying">
+                    <i class="fa fa-edit"></i><span>留言</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/about">
+                    <i class="fa fa-user"></i><span>关于我</span>
+                </a>
+            </li>
+            
+        </ul>  
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/软件/" style="font-size: 10px;">软件</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/pop-img.js"></script>
+
+<!-- 
+   开启背景粒子--动态背景
+-->
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/js/animate.js"></script>
+
+<script>
+    if (! mihoConfig.isHome) {
+        $(".article-entry img").popImg();
+    }
+</script>
+  </div>
+</body>

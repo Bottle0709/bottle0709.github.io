@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>利用 Github pages 搭建博客Hexo主题博客 | TLY&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="TLY,TLY's Blog">
+  
+  <meta name="description" content="1.前言&amp;emsp;一直想搭建一个自己的个人博客，看了很多种搭建的方法，最后选择了github pages服务搭建，主要看中以下好处：  全是静态文件，访问速度快；  数据绝对安全，基于github的版本管理；  免费方便，不用花一分钱就可以搭建（毕竟还是一名学生党，目前还没有资金购买服务器）。   &amp;emsp;而使用github pages搭建博客有两种方式，hexo和jekyll，当时我先采">
+<meta name="keywords" content="github,hexo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="利用 Github pages 搭建博客Hexo主题博客">
+<meta property="og:url" content="http://yoursite.com/20180106/利用 Github pages 搭建博客Hexo主题博客/index.html">
+<meta property="og:site_name" content="TLY&#39;s Blog">
+<meta property="og:description" content="1.前言&amp;emsp;一直想搭建一个自己的个人博客，看了很多种搭建的方法，最后选择了github pages服务搭建，主要看中以下好处：  全是静态文件，访问速度快；  数据绝对安全，基于github的版本管理；  免费方便，不用花一分钱就可以搭建（毕竟还是一名学生党，目前还没有资金购买服务器）。   &amp;emsp;而使用github pages搭建博客有两种方式，hexo和jekyll，当时我先采">
+<meta property="og:image" content="http://p3nn031ge.bkt.clouddn.com/blog/180206/jhF88k5IE7.png?imageslim">
+<meta property="og:image" content="http://p3nn031ge.bkt.clouddn.com/blog/180205/JKKL2eD8H0.png?imageslim">
+<meta property="og:image" content="http://p3nn031ge.bkt.clouddn.com/blog/180205/2i59EgGHH9.png?imageslim">
+<meta property="og:image" content="http://p3nn031ge.bkt.clouddn.com/blog/180205/C7C085geGH.png?imageslim">
+<meta property="og:image" content="http://p3nn031ge.bkt.clouddn.com/blog/180205/fCegJA2I1l.png?imageslim">
+<meta property="og:image" content="http://p3nn031ge.bkt.clouddn.com/blog/180205/4i0c1hclJb.png?imageslim">
+<meta property="og:image" content="http://p3nn031ge.bkt.clouddn.com/blog/180205/GKmBFbmhja.png?imageslim">
+<meta property="og:image" content="http://p3nn031ge.bkt.clouddn.com/blog/180205/K13CDbffJh.png?imageslim">
+<meta property="og:image" content="http://p3nn031ge.bkt.clouddn.com/blog/180205/GhHHIhI5Fl.png?imageslim">
+<meta property="og:image" content="http://p3nn031ge.bkt.clouddn.com/blog/180205/bLBff6a9AF.png?imageslim">
+<meta property="og:image" content="http://p3nn031ge.bkt.clouddn.com/blog/180205/D6e5FH9cb0.png?imageslim">
+<meta property="og:image" content="http://p3nn031ge.bkt.clouddn.com/blog/180205/21AG9c7DLH.png?imageslim">
+<meta property="og:image" content="http://p3nn031ge.bkt.clouddn.com/blog/180205/ACE1b8Gl8a.png?imageslim">
+<meta property="og:image" content="http://p3nn031ge.bkt.clouddn.com/blog/180205/i4lHJ2EDKa.png?imageslim">
+<meta property="og:image" content="http://p3nn031ge.bkt.clouddn.com/blog/180205/7Dk0Ff6170.png?imageslim">
+<meta property="og:image" content="http://p3nn031ge.bkt.clouddn.com/blog/180205/FGH6A2bkAh.png?imageslim">
+<meta property="og:image" content="http://p3nn031ge.bkt.clouddn.com/blog/180205/cmE5g9jALA.png?imageslim">
+<meta property="og:updated_time" content="2018-02-06T10:54:29.448Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="利用 Github pages 搭建博客Hexo主题博客">
+<meta name="twitter:description" content="1.前言&amp;emsp;一直想搭建一个自己的个人博客，看了很多种搭建的方法，最后选择了github pages服务搭建，主要看中以下好处：  全是静态文件，访问速度快；  数据绝对安全，基于github的版本管理；  免费方便，不用花一分钱就可以搭建（毕竟还是一名学生党，目前还没有资金购买服务器）。   &amp;emsp;而使用github pages搭建博客有两种方式，hexo和jekyll，当时我先采">
+<meta name="twitter:image" content="http://p3nn031ge.bkt.clouddn.com/blog/180206/jhF88k5IE7.png?imageslim">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+  
+
+  
+  
+
+</head>
+</html>
+<body>
+  <div id="container">
+      <!-- 
+   header.ejs 首页头部设计
+-->
+<style>
+    .fa{
+        font-size: 1.5em;
+    }
+    /*移动端（手机端）*/
+@media screen and (max-width: 600px) {
+    .fa{
+        font-size: 1.33em;
+    }
+   }
+    </style>
+<header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left"> <!--  菜单左边——tly's blog -->
+                    <span class="site-title">TLY&#39;s Blog</span>
+                </a>
+                <nav id="header-menu-nav" class="right"> <!--  菜单右边——首页等 -->
+                    
+                    <a href="/">
+                        <i class="fa fa-home"></i>
+                        <span>首页</span>
+                    </a>
+                    
+                    <a href="/categories">
+                        <i class="fa fa-book"></i>
+                        <span>分类</span>
+                    </a>
+                    
+                    <a href="/project">
+                        <i class="fa fa-folder-open"></i>
+                        <span>项目</span>
+                    </a>
+                    
+                    <a href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>归档</span>
+                    </a>
+                    
+                    <a href="/saying">
+                        <i class="fa fa-edit"></i>
+                        <span>留言</span>
+                    </a>
+                    
+                    <a href="/about">
+                        <i class="fa fa-user"></i>
+                        <span>关于我</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/logo.png" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-description">
+                    
+                    <h3>
+                        一个记录自己生活点滴、互联网技术学习成果和经验的原创自媒体个人网站
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="Github" target="_blank" href="//github.com/tongliping0709">
+                            <div class="fa"><i class="fa fa-github"></i></div></a>
+                    
+                        <a title="weibo" target="_blank" href="//weibo.com/tongliping0709">
+                            <div class="fa"><i class="fa fa-weibo"></i></div></a>
+                    
+                        <a title="email" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=fkhOSkhISUhNTT4PD1AdERM" rel="external nofollow noopener noreferrer">
+                            <div class="fa"><i class="fa fa-envelope-o"></i></div></a>
+                    
+                        <a title="titter" target="_blank" href="//twitter.com/">
+                            <div class="fa"><i class="fa fa-twitter"></i></div></a>
+                    
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-利用 Github pages 搭建博客Hexo主题博客" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+
+  
+    <h1 class="post-title" itemprop="name">
+      利用 Github pages 搭建博客Hexo主题博客
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+        <li>
+         <i class="fa fa-calendar"></i> 2018-01-06  
+        </li>
+        <li>/</li>
+        <li>
+         <i class="fa fa-eye"></i> 访问量: <span id="busuanzi_value_page_pv"></span> 
+        </li>
+        <li>/</li>
+            
+              <li>
+                  <i class="fa fa-book"></i> 分类于:
+                  
+                      <a href="/categories/Hexo/">Hexo</a>
+                  
+              </li>
+          
+      </ul>
+    </div>
+  
+
+           
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            <!--
+   画廊
+-->
+
+            <p><img src="http://p3nn031ge.bkt.clouddn.com/blog/180206/jhF88k5IE7.png?imageslim" alt="mark"></p>
+<h2 id="1-前言"><a href="#1-前言" class="headerlink" title="1.前言"></a>1.前言</h2><p>&emsp;一直想搭建一个自己的个人博客，看了很多种搭建的方法，最后选择了github pages服务搭建，主要看中以下好处：</p>
+<ul>
+<li><p>全是静态文件，访问速度快；</p>
+</li>
+<li><p>数据绝对安全，基于github的版本管理；</p>
+</li>
+<li><p>免费方便，不用花一分钱就可以搭建（毕竟还是一名学生党，目前还没有资金购买服务器）。</p>
+</li>
+</ul>
+<p>&emsp;而使用github pages搭建博客有两种方式，hexo和jekyll，当时我先采用的是jekyll方式搭建，但由于配置环境时一直出现错误，查了很多资料无法解决，就转战到hexo方式搭建。在此过程中，折腾博客的各种配置以及功能占具了我一部分时间，现通过文章记录过程，以免过后遗忘，且当备份之用。</p>
+<h2 id="2-准备工作"><a href="#2-准备工作" class="headerlink" title="2.准备工作"></a>2.准备工作</h2><p>&emsp;在开始之前，你必须已经</p>
+<ul>
+<li><p>有一个github账号，没有的话先去注册一个；</p>
+</li>
+<li><p>安装node.js、npm，并了解相关基础知识； </p>
+</li>
+<li><p>安装git for windows(或者其他git客户端) 。</p>
+</li>
+</ul>
+<p>&emsp;上面几点操作的具体步骤，找度娘即可，我就不一一称述了。</p>
+<h2 id="3-搭建github博客"><a href="#3-搭建github博客" class="headerlink" title="3.搭建github博客"></a>3.搭建github博客</h2><h3 id="emsp-3-1-创建仓库"><a href="#emsp-3-1-创建仓库" class="headerlink" title="&emsp;3.1.创建仓库"></a>&emsp;3.1.<strong>创建仓库</strong></h3><hr>
+<p>&emsp;进入github官网登录你的账号，新建一个名为<code>你的用户名.github.io</code>的仓库。<br>&emsp;例如：，你的github用户名是zhangsan，那么你新建<code>zhangsan.github.io</code>的仓库（必须是你的用户名，其他名称无效），将来你的网站访问地址就是<a href="http://zhangsan.github.io，这样是不是很方便？" rel="external nofollow noopener noreferrer" target="_blank">http://zhangsan.github.io，这样是不是很方便？</a><br><img src="http://p3nn031ge.bkt.clouddn.com/blog/180205/JKKL2eD8H0.png?imageslim" alt="mark"></p>
+<p>&emsp;需要注意的几个地方：</p>
+<ul>
+<li><p>注册的邮箱一定要验证，否则不会成功；</p>
+</li>
+<li><p>仓库名字必须是：<code>username.github.io</code>,其中<code>username</code>是你的用户名；</p>
+</li>
+<li><p><code>Initialize this repository with a READEM</code>选项一定要勾选。</p>
+<h3 id="emsp-3-2-配置SSH-Key"><a href="#emsp-3-2-配置SSH-Key" class="headerlink" title="&emsp;3.2.配置SSH Key"></a>&emsp;3.2.<strong>配置SSH Key</strong></h3></li>
+</ul>
+<hr>
+<p>&emsp;为什么要配置这个呢？因为你提交代码肯定要拥有的github权限才可以，但直接使用用户名和密码不太安全，所以我们用SSH Key来解决本地和服务器的连接问题。</p>
+<p>&emsp;1.打开 Git Bash ,设置 Git 的user name 和 email(如果是第一次的话)，这里的用户名和邮箱替换成你自己的。<br><img src="http://p3nn031ge.bkt.clouddn.com/blog/180205/2i59EgGHH9.png?imageslim" alt="mark"></p>
+<p>&emsp;2.输入<code>cd ~/.ssh</code>,检查是否有.ssh的文件。<br><img src="http://p3nn031ge.bkt.clouddn.com/blog/180205/C7C085geGH.png?imageslim" alt="mark"></p>
+<p>&emsp;3.输入<code>ls</code>,列出该文件下的内容，说明存在.ssh文件。<br><img src="http://p3nn031ge.bkt.clouddn.com/blog/180205/fCegJA2I1l.png?imageslim" alt="mark"></p>
+<p>&emsp;4.如果不显示，则输入<code>ssh-keygen -t rsa -C “你的邮箱”</code>，连续三个回车，生成密钥，最后得到了两个文件：id_rsa和id_rsa.pub（默认存储路径是：C:\Users\Administrator.ssh）。<br><img src="http://p3nn031ge.bkt.clouddn.com/blog/180205/4i0c1hclJb.png?imageslim" alt="mark"></p>
+<p>&emsp;5.打开用户目录，找到.ssh\id_rsa.pub文件，记事本打开并复制里面的内容，打开你的github主页，进入个人设置 -&gt; SSH and GPG keys -&gt; New SSH key ,将刚复制的内容粘贴到key那里，title写项目的名字，保存。<br><img src="http://p3nn031ge.bkt.clouddn.com/blog/180205/GKmBFbmhja.png?imageslim" alt="mark"></p>
+<p>&emsp;6.输入<code>ssh -T git@github.com</code>（注意邮箱地址不用改），测试添加ssh是否成功。如果看到Hi后面是你的用户名，就说明成功了。<br><img src="http://p3nn031ge.bkt.clouddn.com/blog/180205/K13CDbffJh.png?imageslim" alt="mark"></p>
+<h3 id="emsp-3-3-使用Hexo写博客"><a href="#emsp-3-3-使用Hexo写博客" class="headerlink" title="&emsp;3.3.使用Hexo写博客"></a>&emsp;3.3.<strong>使用Hexo写博客</strong></h3><hr>
+<p>&emsp;由于github pages存放的都是静态文件，博客存放的不只是文章内容，还有文章列表、分类、标签、翻页等动态内容，假如每次写完一篇文章都要手动更新博文目录和相关链接信息，相信谁都会疯掉，所以hexo所做的就是将这些md文件都放在本地，每次写完文章后调用写好的命令来批量完成相关页面的生成，然后再将有改动的页面提交到github。</p>
+<h4 id="emsp-3-3-1-安装-Hexo"><a href="#emsp-3-3-1-安装-Hexo" class="headerlink" title="&emsp;3.3.1 安装 Hexo"></a>&emsp;3.3.1 安装 Hexo</h4><p>&emsp;1.在自己认为合适的地方创个文件夹，我是在D盘建了一个blog文件夹，然后通过命令行进入到该文件夹里面。<br><img src="http://p3nn031ge.bkt.clouddn.com/blog/180205/GhHHIhI5Fl.png?imageslim" alt="mark"></p>
+<p>&emsp;2.输入<code>npm install hexo -g</code>，开始安装Hexo。<br><img src="http://p3nn031ge.bkt.clouddn.com/blog/180205/bLBff6a9AF.png?imageslim" alt="mark"></p>
+<p>&emsp;3.输入<code>hexo -v</code>，检查hexo是否安装成功。<br><img src="http://p3nn031ge.bkt.clouddn.com/blog/180205/D6e5FH9cb0.png?imageslim" alt="mark"></p>
+<h4 id="emsp-3-3-2-初始化"><a href="#emsp-3-3-2-初始化" class="headerlink" title="&emsp;3.3.2 初始化"></a>&emsp;3.3.2 初始化</h4><p>&emsp;1.输入<code>hexo init</code>，初始化该文件夹（时间会有点久，耐心等待…）看到后面的 “Start blogging with Hexo！”，初始化完成。<br><img src="http://p3nn031ge.bkt.clouddn.com/blog/180205/21AG9c7DLH.png?imageslim" alt="mark"></p>
+<p>hexo会自动下载一些文件到这个目录，包括node_modules，目录结构如下图：<br><img src="http://p3nn031ge.bkt.clouddn.com/blog/180205/ACE1b8Gl8a.png?imageslim" alt="mark"></p>
+<p>&emsp;2.输入<code>npm install</code>，安装所需要的组件。<br><img src="http://p3nn031ge.bkt.clouddn.com/blog/180205/i4lHJ2EDKa.png?imageslim" alt="mark"></p>
+<p>&emsp;3.输入<code>hexo g</code>，hexo就会在public文件夹生成相关html文件，这些文件将来都是要提交到github去的：<br><img src="http://p3nn031ge.bkt.clouddn.com/blog/180205/7Dk0Ff6170.png?imageslim" alt="mark"></p>
+<p>&emsp;4.输入<code>hexo s</code>，此命令是开启本地预览服务，打开浏览器访问 <a href="http://localhost:4000" rel="external nofollow noopener noreferrer" target="_blank">http://localhost:4000</a> 即可看到内容。<br><img src="http://p3nn031ge.bkt.clouddn.com/blog/180205/FGH6A2bkAh.png?imageslim" alt="mark"></p>
+<p>&emsp;第一次初始化的时候hexo已经帮我们写了一篇名为 Hello World 的文章，默认的主题比较丑，打开时就是这个样子：<br><img src="http://p3nn031ge.bkt.clouddn.com/blog/180205/cmE5g9jALA.png?imageslim" alt="mark"></p>
+<h4 id="emsp-3-3-3-修改主题"><a href="#emsp-3-3-3-修改主题" class="headerlink" title="&emsp;3.3.3 修改主题"></a>&emsp;3.3.3 修改主题</h4><p>&emsp;个人觉得默认主题有些丑，所以我换了一个好看的主题，并加工，修改成自己想要的样子。</p>
+<p>&emsp;1.找到自己喜欢的主题，通过 Git checkout 代码下载。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /f/github/hexo/</span><br><span class="line">https:<span class="comment">//github.com/WongMinHo/hexo-theme-miho.git</span></span><br></pre></td></tr></table></figure>
+<p>&emsp;2.下载好主题后，修改<code>_config.yml</code>中的<code>theme: landscape</code>改为<code>theme: miho</code>，然后根据主题配置文件进行配置，再重新执行<code>hexo g</code>来重新生成。</p>
+<p>&emsp;如果出现一些莫名其妙的问题，可以先执行<code>hexo clean</code>来清理一下<code>public</code>的内容，然后再来重新生成和发布。</p>
+<p>&emsp;3.接下来就是根据你自己的爱好，修改所选的主题。</p>
+<h4 id="emsp-3-3-4-备份"><a href="#emsp-3-3-4-备份" class="headerlink" title="&emsp;3.3.4 备份"></a>&emsp;3.3.4 备份</h4><p>&emsp;Hexo在发布之后在github的仓库中我们只能找到生成的静态文件，而我们的博客的源文件：主题，文章之类的，都还在本地，并没有备份。这样很危险，万一那天电脑坏了或者是出现一些其他问题，就得从头再来。所以我们可以利用github的分支思想来备份我们的源文件。<br>&emsp;<strong>1.添加过滤内容</strong><br>&emsp;备份的时候我们把master分支放生成的静态文件，Hexo-Blog（此处文件夹必须和存储分支名字一致）放我们要备份的源文件。</p>
+<p>&emsp;在项目的根目录下新建Hexo-Blog文件夹，将项目中的文件复制粘贴到刚刚新建的文件夹中，<code>.deploy_git</code>、<code>public</code>文件夹和我们的master分支内容重复，而<code>_config.yml</code>为我们的站点配置文件，安全起见，这个几个文件都不备份。所以，我们在根目录下面建一个<code>.gitignore</code>文件来建立“黑名单”。</p>
+<p>&emsp;.gitignore文件内容：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/.deploy_git</span><br><span class="line">/<span class="keyword">public</span>  </span><br><span class="line">/_config.yml</span><br></pre></td></tr></table></figure></p>
+<p>&emsp;<strong>2.备份</strong><br>&emsp;鼠标右击 Hexo-Blog 文件夹，打开 Git Bash ,依次输入<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ git init</span><br><span class="line">$ git remote add origin git<span class="meta">@github</span>.com:username/username.github.io.git		</span><br><span class="line">$ git add .</span><br><span class="line">$ git commit -m <span class="string">"blog"</span></span><br><span class="line">$ git push origin master:Hexo-Blog</span><br></pre></td></tr></table></figure></p>
+<p>&emsp;这时，你会发现你的github博客仓库已经有了一个新分支 Hexo-Blog ,备份工作完成。</p>
+<p>&emsp;<strong>3.后续</strong><br>&emsp;以后，每次在本地写好博文后，可以先执行下列命令进行备份，然后再更新静态文件。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git add .</span><br><span class="line">$ git commit -m <span class="string">"blog"</span></span><br><span class="line">$ git push origin master:Hexo-Blog</span><br></pre></td></tr></table></figure></p>
+<h4 id="emsp-3-3-5-发布"><a href="#emsp-3-3-5-发布" class="headerlink" title="&emsp;3.3.5 发布"></a>&emsp;3.3.5 发布</h4><p>&emsp;1.清空hexo静态文件和缓存，并重新生成<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo g</span><br></pre></td></tr></table></figure></p>
+<p>&emsp;2.本地预览，确没有问题再进行发布<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure></p>
+<p>&emsp;3.进行发布<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d</span><br></pre></td></tr></table></figure></p>
+<h4 id="emsp-3-3-5-效果"><a href="#emsp-3-3-5-效果" class="headerlink" title="&emsp;3.3.5 效果"></a>&emsp;3.3.5 效果</h4><p>&emsp;可以访问我的git博客来查看效果：<a href="https://tongliping0709.github.io/" rel="external nofollow noopener noreferrer" target="_blank">https://tongliping0709.github.io/</a></p>
+
+            <style>
+.passage-end{
+    text-align:center;
+    color: #B8B8B8;
+    font-size:22px;
+    margin-top: 10%; 
+}
+/*平板电脑*/
+@media screen and (min-width:600px) and (max-width:900px){
+    .passage-end{
+        font-size:20px;
+   }
+    }
+
+/*移动端（手机端）*/
+@media screen and (max-width: 600px) {
+    .passage-end {
+    font-size: 12px;
+}
+   }
+</style>
+ <div class="passage-end">
+     -------------本文结束 <i class="fa fa-paw"></i> 感谢您的阅读-------------
+    </div>
+   
+            <!-- 
+   版权
+-->
+<div class="post-copyright">
+    <div class="content">
+        <p>发布时间： 2018年01月06日 11:47</p>
+        <p>更新时间： 2018年02月06日 18:54</p>
+        <p>本文链接： <a class="post-url" href="/20180106/利用 Github pages 搭建博客Hexo主题博客/" title="利用 Github pages 搭建博客Hexo主题博客">http://yoursite.com/20180106/利用 Github pages 搭建博客Hexo主题博客/</a></p>
+        <p>版权声明： 原创文章，有问题请评论中留言。非商业转载请注明作者及出处。</p>
+        <footer>
+           <a href="http://yoursite.com">作者：
+                <img src="/images/logo.png" alt="Tong Liping">
+                Tong Liping
+            </a>
+        </footer>
+    </div>
+</div>
+
+      
+        
+            
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;">赏</a>
+</div>
+
+<div id="reward" class="post-modal reward-lay">
+    <a class="close" href="javascript:;" id="reward-close">×</a>
+    <span class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        多少都行~
+        <i class="icon icon-quote-right"></i>
+    </span>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/images/wechat_code.jpg" alt="打赏二维码">
+        </div>
+        <div class="reward-select">
+            
+            <label class="reward-select-item checked" data-id="wechat" data-wechat="/images/wechat_code.jpg">
+                <img class="reward-select-item-wechat" src="/images/wechat.png" alt="微信">
+            </label>
+            
+            
+            <label class="reward-select-item" data-id="alipay" data-alipay="/images/alipay_code.jpg">
+                <img class="reward-select-item-alipay" src="/images/alipay.png" alt="支付宝">
+            </label>
+            
+        </div>
+    </div>
+</div>
+
+
+        
+    </div>
+    <footer class="article-footer">
+        
+        
+<!--
+   分享
+-->
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/20180106/利用 Github pages 搭建博客Hexo主题博客/&title=《利用 Github pages 搭建博客Hexo主题博客》 — TLY's Blog&pic=http://p3nn031ge.bkt.clouddn.com/blog/180206/jhF88k5IE7.png?imageslim" data-title="微博" rel="external nofollow noopener noreferrer">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/20180106/利用 Github pages 搭建博客Hexo主题博客/&title=《利用 Github pages 搭建博客Hexo主题博客》 — TLY's Blog&source=" data-title="QQ" rel="external nofollow noopener noreferrer">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/20180106/利用 Github pages 搭建博客Hexo主题博客/" data-title="Facebook" rel="external nofollow noopener noreferrer">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《利用 Github pages 搭建博客Hexo主题博客》 — TLY's Blog&url=http://yoursite.com/20180106/利用 Github pages 搭建博客Hexo主题博客/&via=http://yoursite.com" data-title="Twitter" rel="external nofollow noopener noreferrer">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/20180106/利用 Github pages 搭建博客Hexo主题博客/" data-title="Google+" rel="external nofollow noopener noreferrer">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/20180106/利用 Github pages 搭建博客Hexo主题博客/" alt="微信分享二维码">
+</div>
+
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            <!--
+   标签
+-->
+
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/github/" class="color2">github</a>
+      
+    <a href="/tags/hexo/" class="color5">hexo</a>
+      
+  </li>
+
+        </ul>
+        
+    </footer>
+  </div> 
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-前言"><span class="post-toc-text">1.前言</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-准备工作"><span class="post-toc-text">2.准备工作</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3-搭建github博客"><span class="post-toc-text">3.搭建github博客</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#emsp-3-1-创建仓库"><span class="post-toc-text"> 3.1.创建仓库</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#emsp-3-2-配置SSH-Key"><span class="post-toc-text"> 3.2.配置SSH Key</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#emsp-3-3-使用Hexo写博客"><span class="post-toc-text"> 3.3.使用Hexo写博客</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#emsp-3-3-1-安装-Hexo"><span class="post-toc-text"> 3.3.1 安装 Hexo</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#emsp-3-3-2-初始化"><span class="post-toc-text"> 3.3.2 初始化</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#emsp-3-3-3-修改主题"><span class="post-toc-text"> 3.3.3 修改主题</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#emsp-3-3-4-备份"><span class="post-toc-text"> 3.3.4 备份</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#emsp-3-3-5-发布"><span class="post-toc-text"> 3.3.5 发布</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#emsp-3-3-5-效果"><span class="post-toc-text"> 3.3.5 效果</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<!--
+   文章标题导航
+-->
+
+<nav id="article-nav">
+  
+    <a href="/20180107/VScode 前端插件使用/" id="article-nav-newer" class="article-nav-link-wrap">
+
+      <span class="article-nav-title">
+        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+        
+          VScode 前端插件使用
+        
+      </span>
+    </a>
+  
+  
+</nav>
+
+
+
+    
+        
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+
+        <div id="lv-container" data-id="city" data-uid="MTAyMC8zMzU0Mi8xMDA5OA=="></div>
+    
+</section>
+        
+      </div>
+      <!-- 
+   页脚--统计访问数量
+-->
+<footer id="footer">
+  <div class="outer">
+       <div id="footer-info" class="inner">
+      <p>
+      &copy; 2018 <i class="fa fa-heart"></i> Tong Liping<br>
+      </p>
+      
+    <span id="busuanzi_container_site_uv" style="display:none">
+        访用户数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+
+ | 由<a href="http://hexo.io/" target="_blank" rel="external nofollow noopener noreferrer">Hexo</a> Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>强力驱动
+          </div>
+      </div>
+  
+</footer>
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "http://yoursite.com",
+      animate: true,
+      isHome: false,
+      share: true,
+      reward: 1
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            <a class="category-link" href="/categories/Hexo/">Hexo</a><a class="category-link" href="/categories/前端/">前端</a>
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/软件/" style="font-size: 10px;">软件</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a href="/">
+                    <i class="fa fa-home"></i><span>首页</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/categories">
+                    <i class="fa fa-book"></i><span>分类</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/project">
+                    <i class="fa fa-folder-open"></i><span>项目</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/archives">
+                    <i class="fa fa-archive"></i><span>归档</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/saying">
+                    <i class="fa fa-edit"></i><span>留言</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/about">
+                    <i class="fa fa-user"></i><span>关于我</span>
+                </a>
+            </li>
+            
+        </ul>  
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/软件/" style="font-size: 10px;">软件</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/pop-img.js"></script>
+
+<!-- 
+   开启背景粒子--动态背景
+-->
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/js/animate.js"></script>
+
+<script>
+    if (! mihoConfig.isHome) {
+        $(".article-entry img").popImg();
+    }
+</script>
+  </div>
+</body>
